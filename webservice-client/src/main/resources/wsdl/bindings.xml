@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.0" 
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    jaxb:extensionBindingPrefixes="annox xjc"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:annox="http://annox.dev.java.net"
+    xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance">
+
+  <jaxb:bindings schemaLocation="MobileStore.wsdl#types1" node="/xs:schema"> 
+       <jaxb:bindings node="//xs:complexType[@name='Address']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="Address"/>
+          </annox:annotate>
+      </jaxb:bindings>    
+   </jaxb:bindings>
+</jaxb:bindings>

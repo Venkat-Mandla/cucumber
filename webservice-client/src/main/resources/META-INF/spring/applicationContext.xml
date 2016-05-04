@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.8.3.xsd">
+
+
+
+
+	<!-- End point declaration Starts -->
+	<cxf:cxfEndpoint id="mobileStoreClient"
+		address="/MobileStorePort"
+		wsdlURL="http://localhost:2219/cxf/MobileStorePort?wsdl" xmlns:ms="http://www.venkat.com/venkatstore/MobileStore/"
+		endpointName="ms:MobileStorePort" serviceName="ms:MobileStoreService"
+		serviceClass="com.venkat.venkatstore.mobilestore.MobileStore">
+
+	</cxf:cxfEndpoint>
+
+
+	<camelContext id="camelClientId" xmlns="http://camel.apache.org/schema/spring">
+
+	<camel:dataFormats>
+		<camel:jaxb id="jaxbReqRes" contextPath="com.venkat.venkatstore.types.mobilestore"/>
+	</camel:dataFormats>
+		<route id="accountClient">
+			<from uri="direct:serviceClienReqest" />
+			<bean ref="requestPreparer" method="prepareNewMobileRequest" />
+			<to uri="cxf:bean:mobileStoreClient" />
+			<camel:marshal ref="jaxbReqRes"/>
+			<log message="response ${body}"/>
+		</route>
+	</camelContext>
+
+
+	<bean id="requestPreparer" class="com.venkat.venkatstore.client.request.MobileSotreOperationRequestPreparer"/>
+
+</beans>
