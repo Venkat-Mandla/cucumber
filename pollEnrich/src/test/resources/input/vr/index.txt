@@ -1,0 +1,3 @@
+Hello Camel
+Writing file pollEnrich to process the all files in dir
+Same logic will work for all consumers like JPA
