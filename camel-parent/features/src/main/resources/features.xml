@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="get-started">
+
+
+	<feature name="core-features">
+		<feature version="2.15.1.redhat-621084">camel-mail</feature>
+		<feature version="2.15.1.redhat-621084">camel-mybatis</feature>
+		<feature version="2.15.1.redhat-621084">camel-mvel</feature>
+	</feature>
+
+	<feature name="camel-dependencies">
+		<bundle>mvn:org.apache.camel/camel-core/2.16.0</bundle>
+		<bundle>mvn:org.apache.camel/camel-restlet/2.16.0</bundle>
+		<bundle>wrap:mvn:org.restlet.jee/org.restlet/2.3.1</bundle>
+		<bundle>wrap:mvn:org.restlet.jee/org.restlet.ext.httpclient/2.3.1</bundle>
+	</feature>
+
+	<feature name="spring-dependencies">
+		<bundle>wrap:mvn:org.springframework/spring-jdbc/4.2.6.RELEASE</bundle>
+		<bundle>wrap:mvn:org.springframework/spring-tx/4.2.6.RELEASE</bundle>
+		<bundle>wrap:mvn:org.springframework/spring-beans/4.2.6.RELEASE</bundle>
+		<bundle>wrap:mvn:org.springframework/spring-core/4.2.6.RELEASE</bundle>
+		<!-- <bundle>wrap:mvn:org.springframework.boot/spring-boot/1.3.5.RELEASE</bundle> -->
+		<bundle>wrap:mvn:org.springframework.boot/spring-boot-starter-web/1.3.5.RELEASE</bundle>
+	</feature>
+
+	<feature name="data-dependencies">
+		<bundle>mvn:org.mybatis/mybatis-spring/1.2.4</bundle>
+		<bundle>mvn:commons-pool/commons-pool/1.6</bundle>
+		<bundle>mvn:commons-dbcp/commons-dbcp/1.4</bundle>
+	</feature>
+
+	<feature name="common-services">
+		<bundle>mvn:com.venkat.camel.poc/sample-data-service/1.0.0-SNAPSHOT</bundle>
+	</feature>
+
+	<feature name="services">
+		<bundle>mvn:com.venkat.camel.poc/sample-webservice/1.0.0-SNAPSHOT</bundle>
+		<!-- <bundle>mvn:com.venkat.camel.poc/sample-rest-spring-boot/1.0.0-SNAPSHOT</bundle> -->
+	</feature>
+
+	<feature name="all">
+		<feature>core-features</feature>
+		<feature>camel-dependencies</feature>
+		<feature>spring-dependencies</feature>
+		<feature>data-dependencies</feature>
+		<feature>common-services</feature>
+		<feature>services</feature>
+	</feature>
+
+</features>

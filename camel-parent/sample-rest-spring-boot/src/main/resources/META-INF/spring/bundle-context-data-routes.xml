@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.8.3.xsd">
+
+	<camelContext id="StoreDataServiceContext" xmlns="http://camel.apache.org/schema/spring">
+		
+		<route id="getStoreDetailsRoute">
+			<from uri="direct:getStoreDetails" />
+			<log message="data service is invoked ${body}" />
+			<camel:to uri="mybatis:selectOrders?statementType=SelectList"/>
+			<log message="response returning to client form data service: ${body}"/>
+		</route>
+		
+		<route id="persistStoreDetailsRoute">
+			<from uri="direct:persistStoreDetails" />
+			<log message="data service is invoked for persist: ${body}" />
+			<camel:to uri="mybatis:persistOrders?statementType=Insert"/>
+			<log message="response returning to client form data service for persist: ${body}"/>
+		</route>
+		
+			<route id="updateStoreDetailsRoute">
+			<from uri="direct:updateStoreDetails" />
+			<log message="data service is invoked for update ${body}" />
+			<camel:to uri="mybatis:updateOrder?statementType=Update"/>
+			<log message="response returning to client form data service for update ${body}"/>
+		</route>
+
+	</camelContext>
+
+</beans>
