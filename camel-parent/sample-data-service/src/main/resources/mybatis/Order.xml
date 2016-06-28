@@ -1,0 +1,42 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="Order">
+ 
+  <!-- Result maps describe the mapping between the columns returned
+ from a query, and the class properties.  A result map isn't
+ necessary if the columns (or aliases) match to the properties
+ exactly. -->
+ <!--  <resultMap id="OrderResult" type="Order">
+    <result property="id" column="ORD_ID"/>
+    <result property="item" column="ITEM"/>
+    <result property="amount" column="ITEM_COUNT"/>
+    <result property="description" column="ITEM_DESC"/>
+    <result property="processed" column="ORD_DELETED"/>
+  </resultMap> -->
+ 
+  <!-- Select with no parameters using the result map for Order class. -->
+  <select id="selectOrders" resultType="hashmap">
+    select * from Order1 
+  </select>
+ 
+  <!-- Insert example, using the Order parameter class -->
+ <!--  <insert id="insertOrder" parameterType="Order">
+    insert into ORDERS (
+    ORD_ID,
+    ITEM,
+    ITEM_COUNT,
+    ITEM_DESC,
+    ORD_DELETED
+    )
+    values (
+    #{id}, #{item}, #{amount}, #{description}, false
+    )
+  </insert> -->
+ 
+  <update id="consumeOrder" parameterType="map">
+    update ORDERS set ORD_DELETED = true where ORD_ID = #{id}
+  </update>
+ 
+</mapper>

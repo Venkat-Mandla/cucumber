@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.venkat.camel.poc</groupId>
+	<artifactId>camel-parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>VenkaT Parent</name>
+
+	<organization>
+		<name>CGI</name>
+		<url>http://github.com/venkat-mandla/camel</url>
+	</organization>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.5.RELEASE</version>
+	</parent>
+
+	<properties>
+		<camel.version>2.16.0</camel.version>
+		<cxf.version>2.4.1</cxf.version>
+		<felex-version>2.4.0</felex-version>
+	</properties>
+
+
+
+	<developers>
+		<developer>
+			<id>pwebb</id>
+			<name>VEenkat</name>
+			<email>Venkateswarlu.Mandla at CGI.com</email>
+			<organization>CGI</organization>
+			<organizationUrl>http://github.com/venkat-mandla/camel</organizationUrl>
+			<roles>
+				<role>Sr. Software Engineer(Developer)</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+		<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<fork>true</fork>
+					<executable>C:\Program Files\Java\jdk1.7.0_21\bin\javac.exe</executable>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>sample-rest-spring-boot</module>
+		<module>sample-webservice</module>
+		<module>sample-data-service</module>
+		<module>features</module>
+	</modules>
+
+</project>
