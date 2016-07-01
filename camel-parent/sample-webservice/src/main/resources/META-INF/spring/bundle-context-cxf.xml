@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.8.3.xsd">
 
 	<cxf:cxfEndpoint id="mobileStore"
-		address="/MobileStorePort"
+		address="/cgi.com"
 		wsdlURL="wsdl/MobileStore.wsdl" xmlns:ms="http://www.venkat.com/venkatstore/MobileStore/"
 		endpointName="ms:MobileStorePort" serviceName="ms:MobileStoreService"
 			serviceClass="com.venkat.venkatstore.mobilestore.MobileStore">

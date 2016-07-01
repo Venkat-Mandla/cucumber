@@ -14,7 +14,7 @@
 			<from uri="{{cxf.endpoint.uri}}" />
 			<log message="SOAP message received : ${body} and operation name : ${in.header.operationName}" />
 			<camel:unmarshal ref="jaxbReqRes"/> 
-			<!-- <to uri="bean:mobileStreImpl" /> -->
+			<to uri="bean:mobileStreImpl" />
 			<camel:log message="db request: ${body}"/>
 			<camel:setProperty propertyName="response"><camel:simple>${body}</camel:simple></camel:setProperty>
 			<!-- <camel:to uri="bean:messageService?method=getMobileStoreDetails"/> -->
