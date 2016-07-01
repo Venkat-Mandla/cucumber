@@ -12,7 +12,7 @@
 	<feature name="camel-dependencies">
 		<feature version="2.15.1.redhat-621084">camel-restlet</feature>
 		<feature version="2.15.1.redhat-621084">camel-core</feature>
-		<feature version="2.15.1.redhat-621084">activemq-camel</feature>
+		<!-- <feature version="5.11.0.redhat-621084">activemq-camel</feature> -->
 		
 		<!-- <bundle>mvn:org.apache.camel/camel-core/2.16.0</bundle> -->
 		<!-- <bundle>wrap:mvn:org.restlet.jee/org.restlet/2.3.1</bundle>
