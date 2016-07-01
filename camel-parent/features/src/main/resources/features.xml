@@ -3,15 +3,16 @@
 
 
 	<feature name="core-features">
-		<feature version="2.15.1.redhat-620133">camel-mail</feature>
-		<feature version="2.15.1.redhat-620133">camel-mybatis</feature>
-		<feature version="2.15.1.redhat-620133">camel-mvel</feature>
+		<feature version="2.15.1.redhat-621084">camel-mail</feature>
+		<feature version="2.15.1.redhat-621084">camel-mybatis</feature>
+		<feature version="2.15.1.redhat-621084">camel-mvel</feature>
 		
 	</feature>
 
 	<feature name="camel-dependencies">
-		<feature version="2.15.1.redhat-620133">camel-restlet</feature>
-		<feature version="2.15.1.redhat-620133">camel-core</feature>
+		<feature version="2.15.1.redhat-621084">camel-restlet</feature>
+		<feature version="2.15.1.redhat-621084">camel-core</feature>
+		<feature version="2.15.1.redhat-621084">activemq-camel</feature>
 		
 		<!-- <bundle>mvn:org.apache.camel/camel-core/2.16.0</bundle> -->
 		<!-- <bundle>wrap:mvn:org.restlet.jee/org.restlet/2.3.1</bundle>
@@ -40,7 +41,7 @@
 	<feature name="services">
 		<bundle>mvn:com.venkat.camel.poc/sample-webservice/1.0.0-SNAPSHOT</bundle>
 		<bundle>mvn:com.venkat.camel.poc/sample-webservice-client/1.0.0-SNAPSHOT</bundle>
-		<bundle>mvn:com.venkat.camel.poc/sample-rest-spring-boot/1.0.0-SNAPSHOT</bundle>
+		<bundle>mvn:com.venkat.camel.poc/sample-camel-rest/1.0.0-SNAPSHOT</bundle>
 	</feature>
 
 	<feature name="all">

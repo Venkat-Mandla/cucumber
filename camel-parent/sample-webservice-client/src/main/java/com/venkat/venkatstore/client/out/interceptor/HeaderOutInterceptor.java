@@ -5,6 +5,7 @@ package com.venkat.venkatstore.client.out.interceptor;
 
 import java.util.List;
 
+import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 
 import org.apache.cxf.binding.soap.SoapHeader;
@@ -12,6 +13,7 @@ import org.apache.cxf.binding.soap.SoapMessage;
 import org.apache.cxf.binding.soap.interceptor.AbstractSoapInterceptor;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.interceptor.Fault;
+import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.apache.cxf.phase.Phase;
 
 import com.venkat.venkatstore.types.mobilestore.MobileStoreHeader;
@@ -37,15 +39,19 @@ public class HeaderOutInterceptor extends AbstractSoapInterceptor {
 	public void handleMessage(SoapMessage soapMessage) throws Fault {
 		List<Header> headers = soapMessage.getHeaders();
 		if(headers.isEmpty()){
-			headers.add(getHeader());
+			try {
+				headers.add(getHeader());
+			} catch (JAXBException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-	private Header getHeader() {
+	private Header getHeader() throws JAXBException {
 		MobileStoreHeader mobileStoreHeader = new MobileStoreHeader();
 		mobileStoreHeader.setClientId("11110000");
 		mobileStoreHeader.setClientName("CGI");
-		Header header=new SoapHeader(new QName("http://www.venkat.com/venkatstore/types/MobileStore/"), mobileStoreHeader);
+		Header header=new SoapHeader(new QName("http://www.venkat.com/venkatstore/types/MobileStore/","MobileStoreHeader"), mobileStoreHeader,new JAXBDataBinding(MobileStoreHeader.class));
 		return header;
 	}
 

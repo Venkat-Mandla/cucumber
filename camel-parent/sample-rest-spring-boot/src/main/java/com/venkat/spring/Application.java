@@ -15,11 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 	
 	public static void main(String[] args) {
-		try {
-			new SpringApplication(Class.forName(args[0])).run(args);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+			new SpringApplication(Application.class).run(args);
 	}
 
 }

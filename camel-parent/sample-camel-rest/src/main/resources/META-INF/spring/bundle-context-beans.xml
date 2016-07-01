@@ -4,23 +4,10 @@
 	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:cxf="http://camel.apache.org/schema/cxf"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.8.3.xsd">
 
-	<cxf:cxfEndpoint id="mobileStoreClient"
-		address="http://localhost:8181/cxf/cgi.com?wsdl"
-		wsdlURL="wsdl/MobileStore.wsdl" xmlns:ms="http://www.venkat.com/venkatstore/MobileStore/"
-		endpointName="ms:MobileStorePort" serviceName="ms:MobileStoreService"
-			serviceClass="com.venkat.venkatstore.mobilestore.MobileStore">
+	<!-- <bean id="dataServiceImpl" class="com.venkat.venkatstore.mobilestore.osgi.impl.MobileStoreDataServiceImpl" /> -->
+	<bean id="restlet" class="org.apache.camel.component.restlet.RestletComponent"/>
 	
-		<cxf:properties>
-			<entry key="dataFormat" value="PAYLOAD" />
-			<!-- <entry key="setDefaultBus" value="true" /> -->
-		</cxf:properties>
-		<cxf:inInterceptors>
-			<ref bean="logInterceptor"/>
-		</cxf:inInterceptors>
-		<cxf:outInterceptors>
-			<ref bean="headerInterceptor"/>
-			<ref bean="logInterceptor"/>
-		</cxf:outInterceptors>
-	</cxf:cxfEndpoint>
-	
+	<bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent">
+		<property name="location" value="applicaton.properties"/>
+	</bean>
 </beans>

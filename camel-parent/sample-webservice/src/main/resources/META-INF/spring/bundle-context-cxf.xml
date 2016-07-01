@@ -15,6 +15,12 @@
 			<entry key="dataFormat" value="PAYLOAD" />
 			<!-- <entry key="setDefaultBus" value="true" /> -->
 		</cxf:properties>
+		<cxf:inInterceptors>
+			<ref bean="logInterceptor"/>
+		</cxf:inInterceptors>
+		<cxf:outInterceptors>
+			<ref bean="logInterceptor"/>
+		</cxf:outInterceptors>
 	</cxf:cxfEndpoint>
 	
 </beans>
