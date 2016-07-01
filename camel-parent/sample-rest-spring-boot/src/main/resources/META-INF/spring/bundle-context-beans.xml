@@ -5,5 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.8.3.xsd">
 
 	<!-- <bean id="dataServiceImpl" class="com.venkat.venkatstore.mobilestore.osgi.impl.MobileStoreDataServiceImpl" /> -->
-
+	<bean id="restlet" class="org.apache.camel.component.restlet.RestletComponent"/>
+	
+	<bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent">
+		<property name="location" value="applicaton.properties"/>
+	</bean>
 </beans>

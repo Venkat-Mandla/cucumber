@@ -16,10 +16,10 @@
 
 
 	<dependencies>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
@@ -93,6 +93,16 @@
 			<version>1.2.4</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- <dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet.ext.httpclient</artifactId>
+			<version>2.2.3</version>
+		</dependency> -->
 
 
 	</dependencies>
@@ -105,15 +115,6 @@
 				<extensions>true</extensions>
 				<version>3.0.0</version>
 			</plugin>
-		<!-- 	<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<fork>true</fork>
-					<executable>C:\Program Files\Java\jdk1.6.0_11\bin\javac.exe</executable>
-				</configuration>
-			</plugin> -->
 		</plugins>
 
 	</build>
