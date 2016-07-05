@@ -11,6 +11,7 @@ import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Venkat
  * 
  */
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/META-INF/spring/bundle-context-test-routes.xml" })
 public class CxfEndpointClientTest{
@@ -64,6 +66,7 @@ public class CxfEndpointClientTest{
 	}
 	
 
+	@SuppressWarnings("deprecation")
 	private void addAdwiseToSkipEndpoint() throws Exception {
 		camelContext.getRouteDefinition("mobileStoreClient").adviceWith(camelContext, new AdviceWithRouteBuilder() {
 		    @Override
