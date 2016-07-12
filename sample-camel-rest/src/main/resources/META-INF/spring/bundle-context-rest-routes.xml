@@ -1,0 +1,49 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.8.3.xsd">
+
+
+	<camelContext id="restContext" xmlns="http://camel.apache.org/schema/spring">
+		
+		<camel:restConfiguration component="restlet" host="localhost" port="8180"/>
+	
+	
+		<camel:rest path="/camelRest">
+			<camel:get uri="/getStoreDetails" >
+				<camel:to uri="direct:getStoreDetails"/>
+			</camel:get>
+			<camel:get uri="/getStoreDetails1" >
+				<camel:to uri="direct:getStoreDetails"/>
+			</camel:get>
+			<camel:post uri="/getDetails">
+				<camel:to uri="direct:getStoreDetails"/>
+			</camel:post>
+		</camel:rest>
+		
+		
+		<route id="getStoreDetailsRoute">
+			<from uri="direct:getStoreDetails" />
+			<log message="direct:getStoreDetails route is invoked ${body}" />
+			<setBody>
+				<simple>'getStoreDetailsRoute response mock'</simple>
+			</setBody>
+			<camel:to uri="activemq:inputQueue" />
+			
+			<log message="response returning to client form direct:getStoreDetails route: ${body}"/>
+		</route>
+		
+		<route id="persistStoreDetailsRoute">
+			<from uri="direct:persistStoreDetails" />
+			<log message="direct:persistStoreDetails is invoked for persist: ${body}" />
+			<!-- <camel:to uri="mybatis:persistOrders?statementType=Insert"/> -->
+			<setBody>
+				<simple>'persistStoreDetailsRoute resonse mock'</simple>
+			</setBody>
+			<log message="response returning to client form direct:persistStoreDetails: ${body}"/>
+		</route>
+		
+		
+	</camelContext>
+
+</beans>

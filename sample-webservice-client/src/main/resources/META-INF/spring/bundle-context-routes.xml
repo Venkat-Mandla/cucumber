@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.8.3.xsd">
+
+	<camelContext id="camelClientId" xmlns="http://camel.apache.org/schema/spring">
+
+	<camel:dataFormats>
+		<camel:jaxb id="jaxbReqRes" contextPath="com.venkat.venkatstore.types.mobilestore"/>
+	</camel:dataFormats>
+		<route id="mobileStoreClient">
+			<from uri="{{inputQueue}}" />
+			<log message="message received from queue: ${body}"/>
+			<bean ref="requestProcessor" method="prepareNewMobileRequest" />
+			<to uri="cxf:bean:mobileStoreClient" />
+			<to uri="responseProcessor"/>
+			<camel:marshal ref="jaxbReqRes"/>
+			<log message="response ${body}"/>
+			<to uri="{{outQueue}}" pattern="InOnly" id="outQueue"/>
+			<to uri="direct:sendEmail"/>
+		</route>
+		
+		<route id="SendEmailRoute">
+			<from uri="direct:sendEmail"/>
+			<camel:log message="to emails ${properties:toEmails} and from email ${properties:fromEmail}"/>
+			<camel:setHeader headerName="To">
+				<camel:simple>${properties:toEmails}</camel:simple>
+			</camel:setHeader>
+			<camel:setHeader headerName="Subject">
+				<camel:simple>${properties:emailSubject}</camel:simple>
+			</camel:setHeader>
+			<camel:log message="trying to send email"/>
+			<to uri="smtps://{{hostName}}?username={{fromEmail}}&amp;password={{pass}}"/>
+		</route>
+	</camelContext>
+
+</beans>
