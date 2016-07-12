@@ -50,7 +50,7 @@ public class IrctcLoginTest {
 
 		WebElement cImageElement = unitdriver.findElement(By.id("cimage"));
 
-		System.out.println("UserName: " + userName);
+		System.out.println("UserName: " + cImageElement);
 
 	}
 
@@ -77,6 +77,7 @@ public class IrctcLoginTest {
 
 	@After
 	public void tearDown() {
+		LOG.info("closing the browser");
 		driver.quit();
 	}
 

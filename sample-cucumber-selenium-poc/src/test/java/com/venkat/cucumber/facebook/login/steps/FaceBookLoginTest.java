@@ -58,6 +58,7 @@ public class FaceBookLoginTest {
 	}
 	@After
 	public void tearDown(){
+		LOG.info("closing the browser");
 		driver.quit();
 	}
 
